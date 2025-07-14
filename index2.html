@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEAM login</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <!-- Biblioteca do Google Sign-In (invisível) -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <main class="container">
+    <form action="https://samuelpaf345.github.io/Site_DEAM.com/" method="GET">
+      <h1>Login DEAM</h1>
+
+      <!-- Seu formulário original (sem alterações) -->
+      <div class="input-box">
+        <input required placeholder="Usuário" type="email">
+        <i class="bx bxs-user"></i>
+      </div>
+
+      <div class="input-box">
+        <input required placeholder="Senha" type="password">
+        <i class="bx bxs-lock-alt"></i>
+      </div>
+
+      <div class="remember-forgot">
+        <label><input type="checkbox"> Lembrar senha</label>
+        <a href="#">Esqueci a senha</a>
+      </div>
+
+      <button type="submit" class="login">Login</button>
+
+      <!-- Link "Cadastre-se" original, mas agora com login do Google -->
+      <div class="register-link">
+        <p>Não tem uma conta?
+          <a href="#" id="googleSignUp">Cadastre-se</a>
+        </p>
+      </div>
+    </form>
+  </main>
+
+  <script>
+    // Configuração invisível do Google Sign-In
+    window.onload = function() {
+      google.accounts.id.initialize({
+        client_id: "69809060328-3rkjjv3d3i7ijh4lcshi3s3n7ri160mh.apps.googleusercontent.com", // Substitua pelo seu ID real
+        callback: function(response) {
+          // Redireciona para seu site após o login
+          window.location.href = "https://samuelpaf345.github.io/Site_DEAM.com/";
+        }
+      });
+
+      // Ativa o Google Sign-In quando clicar em "Cadastre-se"
+      document.getElementById("googleSignUp").addEventListener("click", function(e) {
+        e.preventDefault();
+        google.accounts.id.prompt(); // Abre o popup do Google
+      });
+    };
+  </script>
+</body>
+</html>
